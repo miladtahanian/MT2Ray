@@ -1,76 +1,133 @@
-# G2Ray
+<p align="center">
+  <img src="https://img.shields.io/badge/MRH--G2Ray-2.0.0-0057B3?style=for-the-badge&logo=github&logoColor=white"/>
+  <img src="https://img.shields.io/badge/License-MIT-FFC107?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Platform-Codespaces-181717?style=for-the-badge&logo=github"/>
+  <img src="https://img.shields.io/badge/GUI-Admin_Panel-FF69B4?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Status-Stable-00C853?style=for-the-badge"/>
+</p>
 
-> Only works in places where you can open GitHub Codespaces
+<h1 align="center">MRH-G2Ray <br> <sub>Enterprise-grade VLESS proxy on GitHub Codespaces</sub></h1>
 
-## ⚠️ Important Notice
+<p align="center">
+  <a href="#-english-guide"><strong>📖 English Guide</strong></a> •
+  <a href="#-persian-guide"><strong>📖 راهنمای فارسی</strong></a>
+</p>
 
-**Please read this before using this project:**
+---
 
-This project creates and runs a V2Ray proxy server. While the intention is for legitimate use, **we strongly recommend using a separate GitHub account (not your main account) when forking and running this project**, as GitHub may restrict accounts that violate its terms of service.
+## 💝 Support / حمایت
 
-## Overview
+**Donation Address (آدرس دونیت):**  
+`0x3A90B058E51deeA95dd8912b4bA71c4b159Ec582`  
+*BNB (BEP-20) | Ethereum | Arbitrum | Base | USDT | USDC | DAI*
 
-G2Ray is an automated setup for running a VLESS proxy through GitHub Codespaces. It provides a quick way to set up your own proxy server for accessing content from restricted regions.
+> Support is completely optional / حمایت مالی کاملاً اختیاری است
 
-## Setup
+---
 
-1. **Create or use a secondary GitHub account** (highly recommended)
-2. Fork the repository to your account
-3. Click the green **"Code"** button above
-4. Go to the **"Codespaces"** tab
-5. Click **"Create codespace on main"**
-6. Wait for the setup to complete (usually 2-5 minutes)
+## 📚 Documentation
 
-## How to Use
+| Language | Link | Audience |
+|:---|:---|:---|
+| **English** | [Complete Guide](./docs/GUIDE-EN.md) | Beginners to Experts |
+| **فارسی** | [راهنمای جامع](./docs/GUIDE-FA.md) | مبتدی تا حرفه‌ای |
 
-1. **Wait for Codespace initialization** - The setup process takes a few minutes. All dependencies and configurations will be installed automatically.
+---
 
-2. **Get your VLESS link** - Once ready, your VLESS proxy link will be printed directly in the terminal
+## ✨ Key Features
 
-   ![Terminal Screenshot](./docs/screenshot.png)
+| Feature | Description |
+|:---|:---|
+| **100% Free** | 60 hours/month on 2-core machines |
+| **Admin Panel** | Web GUI to copy VLESS link without terminal |
+| **Unique UUID** | Random UUID per Codespace for enhanced security |
+| **Modular Architecture** | Stable, maintainable, and extensible scripts |
+| **Cross-Platform** | Compatible with V2rayNG, Hiddify, Streisand, Nekobox |
 
-3. **Import the link** - Copy the generated VLESS link and import it into:
-   - V2RayNG (Android)
-   - Clash Meta
-   - Or any other proxy application that supports VLESS
+---
 
-## Important Notes
+## 🏆 Credits (v2.0)
 
-### GitHub Codespaces Quota
-- GitHub provides **120 free compute hours per month** (per core)
-- For a 2-core Codespace: 120 ÷ 2 = 60 hours/month
-- **Stop your Codespace when not in use** to preserve your hours
-- You can always restart it later when needed
+This project has been significantly improved by **[@mahdiit](https://github.com/mahdiit)** :
 
-### Compatible Networks
-Tested on Shecan (free plan). If these IPs work for you, the proxy should be functional:
-- `63.141.252.203`
-- `50.7.5.83`
-- `94.130.50.12`
+- ✅ Built a complete **Admin Panel** with HTTP Basic Auth
+- ✅ Implemented **unique UUID generation** per Codespace
+- ✅ Refactored startup scripts for **modularity & stability**
+- ✅ Fixed multiple bugs in the original `g2ray` core
 
-If these IPs don't work, try different datacenters or ISPs from your region.
+> Special thanks to all future contributors.
 
-### Troubleshooting
-- If the Codespace fails to start, try creating a new one
-- Check that your GitHub account has Codespaces enabled
-- Ensure you have enough compute hours remaining for the month
-- For network issues, try switching proxy protocols in your client app
+---
 
-## Support the Project
+## 🗺️ Roadmap (Planned Features)
 
-If you find this project useful, consider supporting its development:
+| Feature | Status | Issue |
+| :--- | :---: | :--- |
+| Auto-stop Codespace after inactivity | 📋 Planned | [#3](https://github.com/mrh000mrh/MRH-G2Ray-2/issues/3) |
+| Traffic statistics panel | 💡 Idea | — |
+| Multi-user support | 💡 Idea | — |
 
-### Cryptocurrency Donations
-- **Bitcoin**: `bc1qdwdpeqv0l8ala8tm46rtfeghuxl70een84npj3`
-- **Ethereum**: `0x695CCF873d51E4C2dC1321b405C63BFE99c5a536`
-- **Solana**: `C2d9u9nY2hZfxsi5Fwz1o5VjGGQujWmxeqZ3upKvHBfD`
-- **TON Coin**: `UQAjStDMoMUusqRAuQGZ0Qbc2Th45yUUMdKlbhQ_6aS2TWlD`
-- [Buy me a coffee ☕](https://www.buymeacoffee.com/amiremohamadi) (donate to the main REPO, he made it happen)
+> 💡 **Contributions Welcome:** If you'd like to implement any of these features, please comment on the issue.
 
-## Disclaimer
+---
 
-This tool is provided for educational and legitimate use only. Users are responsible for complying with their local laws and regulations regarding proxy usage. The author is not responsible for any misuse or legal consequences arising from the use of this tool.
+<h2 id="-english-guide" align="left">🇬🇧 Quick Start (English)</h2>
 
-## License
+<div dir="ltr">
 
-This project is open-source. Please check the LICENSE file for details.
+### 🚀 What is MRH-G2Ray?
+
+A production-ready VLESS proxy running on **GitHub Codespaces** featuring a dedicated **Admin Panel**, unique UUID per session, and enhanced stability.
+
+### ⚡ 30-Second Setup
+
+1. **Fork** this repository
+2. Create a **Codespace** (`Code` → `Codespaces` → `Create codespace on main`)
+3. Open the **Admin Panel** (port `8080`) – credentials: `admin` / `Sample@Sample`
+4. **Copy** your VLESS link
+5. **Connect** using V2rayNG, Hiddify, etc.
+
+### ⏰ Free Tier Limits
+
+- **60 hours/month** on 2-core machines (1-core **not** available)
+- **Stop** = halts compute, storage persists
+- **Delete** = frees both compute and storage
+
+> 📖 For detailed instructions, see the [**Complete English Guide**](./docs/GUIDE-EN.md)
+
+</div>
+
+---
+
+<h2 id="-persian-guide" dir="rtl" align="right">🇮🇷 شروع سریع (فارسی)</h2>
+
+<div dir="rtl">
+
+### 🚀 پروژه MRH-G2Ray چیست؟
+
+یک پروکسی VLESS سطح بالا که روی **GitHub Codespaces** اجرا می‌شود و دارای **پنل مدیریت**، UUID یکتا برای هر نشست و پایداری فوق‌العاده است.
+
+### ⚡ راه‌اندازی در ۳۰ ثانیه
+
+1. **فورک** کردن این مخزن
+2. ساخت **Codespace** (`Code` → `Codespaces` → `Create codespace on main`)
+3. باز کردن **پنل مدیریت** (پورت `8080`) – اطلاعات ورود: `admin` / `Sample@Sample`
+4. **کپی** لینک VLESS
+5. **اتصال** با V2rayNG، Hiddify و...
+
+### ⏰ محدودیت سهمیه رایگان
+
+- **۶۰ ساعت در ماه** با ماشین ۲ هسته (ماشین ۱ هسته وجود ندارد)
+- **Stop** = ساعت متوقف می‌شود، فضا باقی می‌ماند
+- **Delete** = هم ساعت و هم فضا آزاد می‌شوند
+
+> 📖 برای راهنمای دقیق، [**راهنمای جامع فارسی**](./docs/GUIDE-FA.md) را مطالعه کنید.
+
+</div>
+
+---
+
+<p align="center">
+  <b>© 2026 MRH-G2Ray | Maintaining digital freedom</b><br>
+  <sub>Version 2.0.0 — Enterprise-grade proxy solution</sub>
+</p>
