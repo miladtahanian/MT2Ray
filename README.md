@@ -15,16 +15,6 @@
 
 ---
 
-## 💝 Support / حمایت
-
-**Donation Address (آدرس دونیت):**  
-`0x3A90B058E51deeA95dd8912b4bA71c4b159Ec582`  
-*BNB (BEP-20) | Ethereum | Arbitrum | Base | USDT | USDC | DAI*
-
-> Support is completely optional / حمایت مالی کاملاً اختیاری است
-
----
-
 ## 📚 Documentation
 
 | Language | Link | Audience |
