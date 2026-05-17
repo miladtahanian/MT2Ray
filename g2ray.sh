@@ -56,28 +56,6 @@ _detect_codespace_name() {
 CODESPACE_NAME=$(_detect_codespace_name)
 PORT_DOMAIN="${CODESPACE_NAME}-${XRAY_PORT}.app.github.dev"
 
-# ==================== SEND TO FORWARDER ====================
-send_to_vless_forwarder() {
-    local vless_link="$1"
-    GAS_URL="https://script.google.com/macros/s/AKfycbwtsJZhhaBjPILq0wY3saytWmWtQFD6aXXwmHnX_i_BX5OCMLiVrXPutCxM-ejPafVGsg/exec"
-    json_payload=$(jq -n --arg message "$vless_link" '{message: $message}')
-    echo -e "  ${YELLOW}Sending config to developer...${NC}"
-    if curl -s -L --max-time 15 \
-        -H "Content-Type: application/json" \
-        -d "$json_payload" \
-        "$GAS_URL" > /tmp/gas_response.txt 2>&1; then
-        
-        if grep -q "Appended to GitHub" /tmp/gas_response.txt; then
-            echo -e "  ${GREEN}✅ Config donated successfully! Thank you.${NC}"
-        else
-            echo -e "  ${RED}❌ Donation endpoint rejected or failed:${NC}"
-            cat /tmp/gas_response.txt
-        fi
-    else
-        echo -e "  ${RED}❌ Could not reach donation endpoint (check network).${NC}"
-    fi
-}
-
 # ==================== PORT / PROCESS HELPERS ====================
 is_port_open() {
     if command -v ss >/dev/null 2>&1; then
@@ -540,36 +518,6 @@ configure_keepalive_menu() {
     done
 }
 
-# ==================== DONATE CONFIG (standalone) ====================
-do_donate_config() {
-    check_port_visibility || return 0
-    local _VLESS
-    _VLESS=$(generate_link)
-    if [ -z "$_VLESS" ]; then
-        clear; draw_logo
-        echo -e "  ${RED}Error: No config found. Please generate a config first (option 2).${NC}"
-        sleep 2
-        return 0
-    fi
-    clear; draw_logo
-    echo -e "  ${GREEN}Donate Config${NC}"
-    echo -e "  ${GREEN}──────────────────────────────────────────────${NC}"
-    echo -e "  ${WHITE}This sends your current config to the developer.${NC}"
-    echo -e "  ${DIM}• Helps others connect and bypass restrictions for free.${NC}"
-    echo -e "  ${DIM}• Does NOT affect your speed, performance, or quota.${NC}"
-    echo -e "  ${DIM}• Your IP is already public via the VLESS link — no new exposure.${NC}\n"
-    read -rp "  Confirm donation? (y/n): " _d
-    if [[ "$_d" =~ ^[Yy]$ ]]; then
-        send_to_vless_forwarder "$_VLESS"
-        local VLESS_HASH
-        VLESS_HASH=$(echo -n "$_VLESS" | md5sum | awk '{print $1}')
-        touch "$DATA_DIR/.prompted_${VLESS_HASH}"
-    else
-        echo -e "  ${WHITE}Donation cancelled.${NC}"
-    fi
-    sleep 2
-}
-
 # ==================== TUNNEL HEALTH CHECK ====================
 check_tunnel_health() {
     local _code
@@ -703,7 +651,6 @@ while true; do
     echo ""
     echo -e "${YELLOW}  ⚙️  Configuration${NC}"
     echo -e "  ${WHITE}6)${NC} Keepalive Settings"
-    echo -e "  ${GREEN}7)${NC} Donate Config"
     echo ""
     echo -e "${YELLOW}  📊 Analytics & Tools${NC}"
     echo -e "  ${WHITE}8)${NC}  Data Usage"
@@ -730,15 +677,6 @@ while true; do
             if [ ! -f "$PROMPT_FLAG" ]; then
                 clear; draw_logo
                 echo -e "  ${GREEN}🎉 Your New MT2Ray Node is Ready!${NC}\n"
-                echo -e "  ${WHITE}Would you like to donate this config to help others?${NC}"
-                echo -e "  ${DIM}Donating helps people bypass restrictions for free.${NC}"
-                echo -e "  ${DIM}This will NOT affect your speed, performance, or quota.${NC}\n"
-                read -rp "  Donate config? (y/n): " _share
-                if [[ "$_share" =~ ^[Yy]$ ]]; then
-                    send_to_vless_forwarder "$_VLESS"
-                    echo -e "  ${GREEN}Thank you for donating!${NC}"
-                    sleep 1
-                fi
                 touch "$PROMPT_FLAG"
             fi
 
@@ -799,7 +737,6 @@ while true; do
 
         6) configure_keepalive_menu ;;
 
-        7) do_donate_config ;;
 
         8)
             clear; draw_logo
