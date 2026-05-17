@@ -6,7 +6,6 @@
 <br/>
 
 </div>
----
 
 ## ⚖️ License
 
