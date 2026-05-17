@@ -1,5 +1,5 @@
 {
-  "name": "MT2Ray-Codespace",
+  "name": "g2ray",
   "build": {
     "dockerfile": "Dockerfile",
     "context": "."
@@ -12,25 +12,19 @@
       "version": "latest"
     }
   },
-  "postStartCommand": "bash ./MT2Ray.sh --silent-start",
-  "postAttachCommand": "bash ./MT2Ray.sh",
+  "postAttachCommand": {
+    "expose": "gh codespace ports visibility 443:public -c $CODESPACE_NAME",
+    "start": "sudo /usr/local/bin/xray run -c /etc/xray/g2ray.json"
+  },
   "portsAttributes": {
     "443": {
-      "label": "MT2Ray-vless",
+      "label": "g2ray",
       "protocol": "http",
-      "onAutoForward": "silent",
-      "visibility": "public"
+      "onAutoForward": "silent"
     }
   },
   "forwardPorts": [443],
   "hostRequirements": {
     "cpus": 2
-  },
-  "customizations": {
-    "vscode": {
-      "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash"
-      }
-    }
   }
 }

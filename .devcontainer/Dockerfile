@@ -1,22 +1,20 @@
 FROM debian:bookworm-slim
 
-LABEL maintainer="MT2Ray" \
-      description="Made By Milad Tahanian"
+ENV XRAY_VERSION=v26.3.27
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        bash curl wget unzip ca-certificates sudo openssl uuid-runtime tmux tzdata \
-        qrencode jq vnstat bc net-tools gnupg libcap2-bin iproute2 \
-    && curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-    && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" > /etc/apt/sources.list.d/github-cli.list \
-    && apt-get update && apt-get install -y --no-install-recommends gh \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+COPY setup.sh /tmp/setup.sh
+COPY config.json /etc/xray/g2ray.json
 
-RUN wget -qO xray.zip "https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip" \
-    && unzip -q xray.zip -d /tmp/xray-dir \
-    && mv /tmp/xray-dir/xray /usr/local/bin/xray \
-    && mv /tmp/xray-dir/*.dat /usr/local/bin/ \
-    && chmod +x /usr/local/bin/xray \
-    && rm -rf xray.zip /tmp/xray-dir
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+       bash curl wget unzip ca-certificates openssl \
+    && rm -rf /var/lib/apt/lists/* \
+    && chmod +x /tmp/setup.sh \
+    && /tmp/setup.sh \
+    && rm /tmp/setup.sh
+
+RUN echo 'printf "\n\033[1;32m[g2ray]\033[0m Connection string:\nvless://2166797c-f912-4a24-a467-c5d0c216cc2d@94.130.50.12:443?encryption=none&security=tls&type=xhttp&mode=packet-up&sni=${CODESPACE_NAME}-443.app.github.dev&path=%2F#g2ray\n"' >> /etc/bash.bashrc
 
 EXPOSE 443
+
+CMD ["/usr/local/bin/xray", "run", "-c", "/etc/xray/g2ray.json"]
