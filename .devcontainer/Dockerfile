@@ -1,20 +1,19 @@
 FROM debian:bookworm-slim
 
-ENV XRAY_VERSION=v26.3.27
+COPY install.sh /app/install.sh
+COPY start-xray.sh /usr/local/bin/start-xray.sh
+COPY start-admin.sh /usr/local/bin/start-admin.sh
+COPY mrh-admin-server.py /usr/local/bin/mrh-admin-server.py
 
-COPY setup.sh /tmp/setup.sh
-COPY config.json /etc/xray/g2ray.json
+WORKDIR /app
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-       bash curl wget unzip ca-certificates openssl \
-    && rm -rf /var/lib/apt/lists/* \
-    && chmod +x /tmp/setup.sh \
-    && /tmp/setup.sh \
-    && rm /tmp/setup.sh
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    bash git curl wget unzip tzdata openssl ca-certificates python3 \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN echo 'printf "\n\033[1;32m[g2ray]\033[0m Connection string:\nvless://2166797c-f912-4a24-a467-c5d0c216cc2d@94.130.50.12:443?encryption=none&security=tls&type=xhttp&mode=packet-up&sni=${CODESPACE_NAME}-443.app.github.dev&path=%2F#g2ray\n"' >> /etc/bash.bashrc
+RUN chmod +x /app/install.sh && /app/install.sh
+RUN chmod +x /usr/local/bin/start-xray.sh /usr/local/bin/start-admin.sh /usr/local/bin/mrh-admin-server.py
+COPY config.json /etc/config.json
+COPY admin /opt/mrh-admin
 
-EXPOSE 443
-
-CMD ["/usr/local/bin/xray", "run", "-c", "/etc/xray/g2ray.json"]
+CMD ["/bin/sh", "-lc", "/usr/local/bin/start-xray.sh && tail -f /tmp/xray.log"]

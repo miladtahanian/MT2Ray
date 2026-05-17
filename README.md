@@ -1,30 +1,101 @@
-# g2ray
+<h1 align="center">MT2Ray <br> <sub>Enterprise-grade VLESS proxy on GitHub Codespaces</sub></h1>
 
-A self-hosted proxy setup that runs inside GitHub Codespaces.
+<p align="center">
+  <a href="#-english-guide"><strong>📖 English Guide</strong></a> •
+  <a href="#-persian-guide"><strong>📖 راهنمای فارسی</strong></a>
+</p>
 
-## Quick Start
+---
 
-1. Fork this repository to your own account
-2. Navigate to your fork and open the **Codespaces** tab under the Code button
-3. Create a new codespace on the main branch
-4. Wait a few minutes for the environment to build and initialize
-5. Your connection string will appear in the terminal once setup is complete
+## 📚 Documentation
 
-## Connecting
+| Language | Link | Audience |
+|:---|:---|:---|
+| **English** | [Complete Guide](./docs/GUIDE-EN.md) | Beginners to Experts |
+| **فارسی** | [راهنمای جامع](./docs/GUIDE-FA.md) | مبتدی تا حرفه‌ای |
 
-Grab the link printed in the terminal and paste it into any compatible client (v2rayNG, Nekobox, etc.).
+---
 
-## Usage Limits
+## ✨ Key Features
 
-GitHub Codespaces provides **120 core-hours/month** on the free tier. Since this config uses 2 cores, that translates to roughly 60 hours per month. Make sure to stop your codespace when not actively using it to avoid burning through your quota.
+| Feature | Description |
+|:---|:---|
+| **100% Free** | 60 hours/month on 2-core machines |
+| **Admin Panel** | Web GUI to copy VLESS link without terminal |
+| **Unique UUID** | Random UUID per Codespace for enhanced security |
+| **Modular Architecture** | Stable, maintainable, and extensible scripts |
+| **Cross-Platform** | Compatible with V2rayNG, Hiddify, Streisand, Nekobox |
 
-## Compatibility
+---
 
-Works on most networks that aren't aggressively blocking GitHub infrastructure. If the default region doesn't work for you, try creating the codespace in a different datacenter.
+## 🏆 Credits (v2.0)
 
-## Disclaimer
+- ✅ Built a complete **Admin Panel** with HTTP Basic Auth
+- ✅ Implemented **unique UUID generation** per Codespace
+- ✅ Refactored startup scripts for **modularity & stability**
+- ✅ Fixed multiple bugs in the original `g2ray` core
 
-This project is strictly experimental and intended for **educational and research purposes only**. It does not violate GitHub's Terms of Service. It uses GitHub Codespaces — a feature officially provided by GitHub — in its intended manner. No abuse, exploit, or unauthorized access is involved.
+> Special thanks to all future contributors.
 
-Users are solely responsible for how they use this software and must comply with all applicable local laws and regulations. The authors assume no liability for any misuse.
+---
 
+<h2 id="-english-guide" align="left">🇬🇧 Quick Start (English)</h2>
+
+<div dir="ltr">
+
+### 🚀 What is MT2Ray?
+
+A production-ready VLESS proxy running on **GitHub Codespaces** featuring a dedicated **Admin Panel**, unique UUID per session, and enhanced stability.
+
+### ⚡ 30-Second Setup
+
+1. **Fork** this repository
+2. Create a **Codespace** (`Code` → `Codespaces` → `Create codespace on main`)
+3. Open the **Admin Panel** (port `8080`) – credentials: `admin` / `Sample@Sample`
+4. **Copy** your VLESS link
+5. **Connect** using V2rayNG, Hiddify, etc.
+
+### ⏰ Free Tier Limits
+
+- **60 hours/month** on 2-core machines (1-core **not** available)
+- **Stop** = halts compute, storage persists
+- **Delete** = frees both compute and storage
+
+> 📖 For detailed instructions, see the [**Complete English Guide**](./docs/GUIDE-EN.md)
+
+</div>
+
+---
+
+<h2 id="-persian-guide" dir="rtl" align="right">🇮🇷 شروع سریع (فارسی)</h2>
+
+<div dir="rtl">
+
+### 🚀 پروژه MT2Ray چیست؟
+
+یک پروکسی VLESS سطح بالا که روی **GitHub Codespaces** اجرا می‌شود و دارای **پنل مدیریت**، UUID یکتا برای هر نشست و پایداری فوق‌العاده است.
+
+### ⚡ راه‌اندازی در ۳۰ ثانیه
+
+1. **فورک** کردن این مخزن
+2. ساخت **Codespace** (`Code` → `Codespaces` → `Create codespace on main`)
+3. باز کردن **پنل مدیریت** (پورت `8080`) – اطلاعات ورود: `admin` / `Sample@Sample`
+4. **کپی** لینک VLESS
+5. **اتصال** با V2rayNG، Hiddify و...
+
+### ⏰ محدودیت سهمیه رایگان
+
+- **۶۰ ساعت در ماه** با ماشین ۲ هسته (ماشین ۱ هسته وجود ندارد)
+- **Stop** = ساعت متوقف می‌شود، فضا باقی می‌ماند
+- **Delete** = هم ساعت و هم فضا آزاد می‌شوند
+
+> 📖 برای راهنمای دقیق، [**راهنمای جامع فارسی**](./docs/GUIDE-FA.md) را مطالعه کنید.
+
+</div>
+
+---
+
+<p align="center">
+  <b>© 2026 MT2Ray | Maintaining digital freedom</b><br>
+  <sub>Version 2.0.0 — Enterprise-grade proxy solution</sub>
+</p>
