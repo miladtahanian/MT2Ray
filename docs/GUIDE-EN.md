@@ -1,4 +1,4 @@
-# MRH-G2Ray Complete Guide (English)
+# MRH-MT2Ray Complete Guide (English)
 
 <p align="center">
   <img src="https://img.shields.io/badge/Version-2.0.0-blue?style=flat-square"/>
@@ -32,7 +32,7 @@
 
 ## 🚀 Project Overview
 
-**MRH-G2Ray** is an enterprise-grade wrapper around the `g2ray` project. It leverages **GitHub Codespaces** (free cloud development environments) to run a **VLESS proxy** on GitHub's global infrastructure.
+**MRH-MT2Ray** is an enterprise-grade wrapper around the `MT2Ray` project. It leverages **GitHub Codespaces** (free cloud development environments) to run a **VLESS proxy** on GitHub's global infrastructure.
 
 - All traffic routes through **GitHub servers** (no personal VPS required).
 - Works seamlessly in restricted regions as long as GitHub is accessible.
@@ -80,7 +80,7 @@
 
 ### 2. Fork the Repository
 
-1. Navigate to: `https://github.com/mrh000mrh/MRH-G2Ray-2`
+1. Navigate to: `https://github.com/mrh000mrh/MRH-MT2Ray-2`
 2. Click the **Fork** button (top-right corner)
 3. (Optional) Rename the repository (e.g., `My-Proxy`)
 4. Click **Create fork**
@@ -180,14 +180,14 @@ Click Update branch
 Manual Setup (For Developers)
 
 # Clone the repository
-git clone https://github.com/mrh000mrh/MRH-G2Ray-2.git
-cd MRH-G2Ray-2
+git clone https://github.com/mrh000mrh/MRH-MT2Ray-2.git
+cd MRH-MT2Ray-2
 
 # Build the Docker image
-docker build -t mrh-g2ray .devcontainer/
+docker build -t mrh-MT2Ray .devcontainer/
 
 # Run the container
-docker run -p 443:443 -p 8080:8080 mrh-g2ray
+docker run -p 443:443 -p 8080:8080 mrh-MT2Ray
 
 
 
@@ -207,4 +207,4 @@ Donation Address:
 0x3A90B058E51deeA95dd8912b4bA71c4b159Ec582
 (BNB, Ethereum, Arbitrum, Base, USDT, USDC, DAI)
 
-<p align="center"> <b>© 2026 MRH-G2Ray | Licensed under MIT</b><br> <sub>Empowering free internet access worldwide</sub> </p> ```
+<p align="center"> <b>© 2026 MRH-MT2Ray | Licensed under MIT</b><br> <sub>Empowering free internet access worldwide</sub> </p> ```

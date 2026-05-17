@@ -1,7 +1,7 @@
 {
-  "name": "ghtun",
+  "name": "MT2Ray-Codespace",
   "build": {
-    "dockerfile": "./Dockerfile",
+    "dockerfile": "Dockerfile",
     "context": "."
   },
   "features": {
@@ -12,25 +12,25 @@
       "version": "latest"
     }
   },
-  "postAttachCommand": {
-    "public": "gh codespace ports visibility 443:public 8080:public -c $CODESPACE_NAME",
-    "xray": "/usr/local/bin/start-xray.sh",
-    "admin": "/usr/local/bin/start-admin.sh"
-  },
+  "postStartCommand": "bash ./MT2Ray.sh --silent-start",
+  "postAttachCommand": "bash ./MT2Ray.sh",
   "portsAttributes": {
     "443": {
-      "label": "xray",
+      "label": "MT2Ray-vless",
       "protocol": "http",
-      "onAutoForward": "silent"
-    },
-    "8080": {
-      "label": "admin-gui",
-      "protocol": "http",
-      "onAutoForward": "openBrowser"
+      "onAutoForward": "silent",
+      "visibility": "public"
     }
   },
-  "forwardPorts": [443, 8080],
+  "forwardPorts": [443],
   "hostRequirements": {
     "cpus": 2
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
   }
 }

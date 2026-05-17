@@ -1,4 +1,4 @@
-# راهنمای جامع MRH-G2Ray (فارسی)
+# راهنمای جامع MRH-MT2Ray (فارسی)
 
 <p align="center">
   <img src="https://img.shields.io/badge/نسخه-2.0.0-blue?style=flat-square"/>
@@ -32,7 +32,7 @@
 
 ## 🚀 معرفی پروژه
 
-**MRH-G2Ray** یک نسخه پیشرفته و سطح بالا از پروژه `g2ray` است که از **GitHub Codespaces** (محیط‌های ابری رایگان توسعه) برای اجرای یک **پروکسی VLESS** روی زیرساخت جهانی گیت‌هاب استفاده می‌کند.
+**MRH-MT2Ray** یک نسخه پیشرفته و سطح بالا از پروژه `MT2Ray` است که از **GitHub Codespaces** (محیط‌های ابری رایگان توسعه) برای اجرای یک **پروکسی VLESS** روی زیرساخت جهانی گیت‌هاب استفاده می‌کند.
 
 - تمام ترافیک از **سرورهای گیت‌هاب** عبور می‌کند (نیازی به VPS شخصی نیست)
 - در مناطق دارای محدودیت اینترنت کار می‌کند (در صورت دسترسی به گیت‌هاب)
@@ -80,7 +80,7 @@
 
 ### ۲. فورک کردن مخزن
 
-1. به آدرس زیر بروید: `https://github.com/mrh000mrh/MRH-G2Ray-2`
+1. به آدرس زیر بروید: `https://github.com/mrh000mrh/MRH-MT2Ray-2`
 2. روی دکمه **Fork** (بالا سمت راست) کلیک کنید
 3. (اختیاری) نام مخزن را تغییر دهید (مثلاً `My-Proxy`)
 4. روی **Create fork** کلیک کنید
@@ -183,14 +183,14 @@ export MRH_ADMIN_PASSWORD="your-strong-password"
 نصب دستی (برای توسعه‌دهندگان)
 
 # کلون کردن مخزن
-git clone https://github.com/mrh000mrh/MRH-G2Ray-2.git
-cd MRH-G2Ray-2
+git clone https://github.com/mrh000mrh/MRH-MT2Ray-2.git
+cd MRH-MT2Ray-2
 
 # ساخت Docker image
-docker build -t mrh-g2ray .devcontainer/
+docker build -t mrh-MT2Ray .devcontainer/
 
 # اجرای کانتینر
-docker run -p 443:443 -p 8080:8080 mrh-g2ray
+docker run -p 443:443 -p 8080:8080 mrh-MT2Ray
 
 
 
@@ -211,4 +211,4 @@ docker run -p 443:443 -p 8080:8080 mrh-g2ray
 
 
 
-<p align="center"> <b>© ۲۰۲۶ MRH-G2Ray | منتشر شده تحت مجوز MIT</b><br> <sub>توانمندسازی دسترسی آزاد به اینترنت در سراسر جهان</sub> </p> ```
+<p align="center"> <b>© ۲۰۲۶ MRH-MT2Ray | منتشر شده تحت مجوز MIT</b><br> <sub>توانمندسازی دسترسی آزاد به اینترنت در سراسر جهان</sub> </p> ```

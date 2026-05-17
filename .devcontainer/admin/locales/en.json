@@ -1,7 +1,7 @@
 {
   "lang": "en",
   "dir": "ltr",
-  "title": "MRH-G2Ray Admin GUI",
+  "title": "MRH-MT2Ray Admin GUI",
   "subtitle": "This panel generates your VLESS link without terminal usage.",
   "uuidLabel": "UUID",
   "pathLabel": "Path",

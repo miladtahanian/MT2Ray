@@ -1,19 +1,22 @@
 FROM debian:bookworm-slim
 
-COPY install.sh /app/install.sh
-COPY start-xray.sh /usr/local/bin/start-xray.sh
-COPY start-admin.sh /usr/local/bin/start-admin.sh
-COPY mrh-admin-server.py /usr/local/bin/mrh-admin-server.py
-
-WORKDIR /app
+LABEL maintainer="MT2Ray" \
+      description="Made By Milad Tahanian"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    bash git curl wget unzip tzdata openssl ca-certificates python3 \
-    && rm -rf /var/lib/apt/lists/*
+        bash curl wget unzip ca-certificates sudo openssl uuid-runtime tmux tzdata \
+        qrencode jq vnstat bc net-tools gnupg libcap2-bin iproute2 \
+    && curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" > /etc/apt/sources.list.d/github-cli.list \
+    && apt-get update && apt-get install -y --no-install-recommends gh \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN chmod +x /app/install.sh && /app/install.sh
-RUN chmod +x /usr/local/bin/start-xray.sh /usr/local/bin/start-admin.sh /usr/local/bin/mrh-admin-server.py
-COPY config.json /etc/config.json
-COPY admin /opt/mrh-admin
+RUN wget -qO xray.zip "https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip" \
+    && unzip -q xray.zip -d /tmp/xray-dir \
+    && mv /tmp/xray-dir/xray /usr/local/bin/xray \
+    && mv /tmp/xray-dir/*.dat /usr/local/bin/ \
+    && chmod +x /usr/local/bin/xray \
+    && rm -rf xray.zip /tmp/xray-dir
 
-CMD ["/bin/sh", "-lc", "/usr/local/bin/start-xray.sh && tail -f /tmp/xray.log"]
+EXPOSE 443
